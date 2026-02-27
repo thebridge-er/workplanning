@@ -1,0 +1,258 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(135deg, #f6d365, #fda085);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1.2rem;
+    background-color: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    align-items: center;
+}
+
+.nav li {
+    list-style: none;
+    margin: 0 10px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #fda085;
+    display: block;
+}
+
+.nav a:hover {
+    color: #da7e65;
+}
+
+.menu {
+    display: flex;
+}
+
+.logo {
+    color: #fda085;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+a.button {
+    padding: 0.5rem 1rem;
+    background-color: #f57d0c;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+    font-size: 1rem;
+}
+
+a.button:hover {
+    background-color: #d35400;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Tarjeta del calendario */
+.calendar-container {
+    display: flex;
+    background-color: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    width: 70%;
+    height: 100%;
+    max-height: 80vh;
+    flex-direction: column;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.2rem;
+    background-color: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    align-items: center;
+}
+
+.footer ul {
+    display: flex;
+}
+
+.footer li {
+    list-style: none;
+    margin: 0 10px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #fda085;
+}
+
+.icono-footer {
+    color: #da7e65;
+    font-size: 25px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.icono-footer:hover {
+    color: #d35400;
+    transform: scale(1.2);
+
+}
+
+/* CAROUSEL */
+
+.carousel-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    overflow: hidden;
+}
+
+.carousel-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    width: 80%;
+}
+
+.carousel-card {
+    flex: 0 0 350px;
+    /* ancho fijo de cada tarjeta */
+    height: 450px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 1rem;
+    transition: transform 0.3s;
+}
+
+.carousel-card:hover {
+    transform: scale(1.2);
+    transform: translateY(-10px);
+    cursor: pointer;
+}
+
+.carousel-card .profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+.carousel-card .profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-card .worker-info {
+    margin-top: 130px;
+    width: 85%;
+    text-align: left;
+}
+
+/* Scrollbar opcional: ocultar en Firefox/Chrome */
+.carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-container {
+    -ms-overflow-style: none;
+    /* IE 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.tags {
+    display: flex;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background-color: rgb(228, 226, 226);
+    color: rgb(83, 83, 83);
+    display: flex;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 2%;
+    border-radius: 5px;
+}
+
+.working {
+    color: rgb(69, 156, 69);
+    font-weight: 900;
+}
+
+.working-container {
+    display: flex;
+    margin-top: 20px;
+}
+
+.vacation {
+    color: #f57d0c;
+    font-weight: 800;
+}
+
+.onleave {
+    color: rgb(173, 47, 47);
+    font-weight: 800;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .calendar-container {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .carousel-card {
+        flex: 0 0 80%;
+        transform: scale(1);
+    }
+
+
+}
