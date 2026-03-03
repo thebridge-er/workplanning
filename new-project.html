@@ -8,19 +8,125 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
     <header>
         <nav class="nav">
             <a href="index.html" class="logo">Workplanning</a>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
             <ul class="menu">
-                <li><a href="equipo.html">Equipo</a></li>
-                <li><a href="vacaciones.html">Vacaciones</a></li>
+                <li><a href="equipo.html">Team</a></li>
+                <li><a href="vacaciones.html">Vacation</a></li>
                 <li><a href="new-project.html" class="button">New project</a></li>
             </ul>
         </nav>
     </header>
+
+    <section class="form-container">
+        <header>
+            <h1>New Project</h1>
+        </header>
+
+        <form id="project-form">
+
+            <!-- PASO 1 -->
+            <fieldset class="step active">
+                <legend>Información del Proyecto</legend>
+
+                <div class="form-group">
+                    <label for="project-name">Nombre del proyecto</label>
+                    <input type="text" id="project-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="start-date">Fecha de inicio</label>
+                    <input type="date" id="start-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ideal-end-date">Fecha ideal de fin</label>
+                    <input type="date" id="ideal-end-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="deadline-date">Fecha límite de fin</label>
+                    <input type="date" id="deadline-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="kickoff-date">Fecha reunión Kick-Off</label>
+                    <input type="date" id="kickoff-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="checkpoints">Número de checkpoints</label>
+                    <input type="number" id="checkpoints" min="0" required>
+                </div>
+
+                <button type="button" id="next-btn">Siguiente</button>
+            </fieldset>
+
+            <!-- PASO 2 -->
+            <fieldset class="step">
+                <legend>Recursos Humanos</legend>
+
+                <div class="resource-group">
+                    <label>Diseñador gráfico</label>
+                    <input type="number" min="0" value="0">
+                </div>
+
+                <div class="resource-group">
+                    <label>Programador</label>
+                    <input type="number" min="0" value="0">
+                </div>
+
+                <div class="resource-group">
+                    <label>Marketing</label>
+                    <input type="number" min="0" value="0">
+                </div>
+
+                <div class="resource-group">
+                    <label>Visual</label>
+                    <input type="number" min="0" value="0">
+                </div>
+
+                <div class="buttons">
+                    <button type="button" id="prev-btn">Atrás</button>
+                    <button type="submit">Crear Proyecto</button>
+                </div>
+            </fieldset>
+
+        </form>
+
+        <script src="script.js"></script>
+        <script>
+            document.getElementById("project-form").addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const name = document.getElementById("project-name").value;
+                const startDate = document.getElementById("start-date").value;
+                const endDate = document.getElementById("deadline-date").value;
+                const kickoffDate = document.getElementById("kickoff-date").value;
+                const checkpoints = document.getElementById("checkpoints").value;
+
+                const newProject = { name, startDate, endDate, kickoffDate, checkpoints };
+
+                const projects = JSON.parse(localStorage.getItem("projects") || "[]");
+                projects.push(newProject);
+                localStorage.setItem("projects", JSON.stringify(projects));
+
+                alert("Proyecto guardado! Se mostrará en el calendario principal.");
+                window.location.href = "index.html"; // Redirige al dashboard
+            });
+        </script>
+    </section>
 
     <main>
 
@@ -30,9 +136,9 @@
     <footer class="footer">
         <p>Created with love</p>
         <ul>
-            <li><a href="">Mail us</a></li>
-            <li><a href="">Call us</a></li>
-            <li><a href="">LinkedIn</a></li>
+            <li><a href=""><i class="fa-regular fa-envelope icono-footer"></i></a></li>
+            <li><a href=""><i class="fa-solid fa-mobile-screen icono-footer"></i></a></li>
+            <li><a href=""><i class="fa-brands fa-linkedin icono-footer"></i></a></li>
         </ul>
     </footer>
 </body>
