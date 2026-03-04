@@ -30,6 +30,7 @@
     </header>
 
     <main>
+        <h1 class="display-none">Workplanning index</h1>
         <div class="calendar-container">
             <div id="calendar"></div>
         </div>
@@ -43,6 +44,68 @@
             <li><a href=""><i class="fa-brands fa-linkedin icono-footer"></i></a></li>
         </ul>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const calendarEl = document.getElementById('calendar');
+
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                height: '100%',
+                expandRows: true,
+                selectable: true,
+                editable: true,
+
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+
+                buttonText: {
+                    today: 'Today',
+                    month: 'Month',
+                    week: 'Week',
+                    day: 'Day'
+                },
+
+                // Eventos iniciales de ejemplo
+                events: [
+                    {
+                        title: 'Project Kickoff',
+                        start: new Date().toISOString().split('T')[0]
+                    },
+                    {
+                        title: 'Design Review',
+                        start: '2026-03-10'
+                    }
+                ],
+
+                // Cuando haces click en un día
+                dateClick: function (info) {
+                    const title = prompt("Enter event title:");
+
+                    if (title) {
+                        calendar.addEvent({
+                            title: title,
+                            start: info.dateStr,
+                            allDay: true
+                        });
+                    }
+                },
+
+                // Cuando haces click en un evento
+                eventClick: function (info) {
+                    if (confirm("Delete this event?")) {
+                        info.event.remove();
+                    }
+                }
+            });
+
+            calendar.render();
+        });
+    </script>
 </body>
 
 </html>

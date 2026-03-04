@@ -29,107 +29,106 @@
         </nav>
     </header>
 
-    <section class="form-container">
-        <header>
-            <h1>New Project</h1>
-        </header>
-
-        <form id="project-form">
-
-            <!-- PASO 1 -->
-            <fieldset class="step active">
-                <legend>Información del Proyecto</legend>
-
-                <div class="form-group">
-                    <label for="project-name">Nombre del proyecto</label>
-                    <input type="text" id="project-name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="start-date">Fecha de inicio</label>
-                    <input type="date" id="start-date" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="ideal-end-date">Fecha ideal de fin</label>
-                    <input type="date" id="ideal-end-date" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="deadline-date">Fecha límite de fin</label>
-                    <input type="date" id="deadline-date" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="kickoff-date">Fecha reunión Kick-Off</label>
-                    <input type="date" id="kickoff-date" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="checkpoints">Número de checkpoints</label>
-                    <input type="number" id="checkpoints" min="0" required>
-                </div>
-
-                <button type="button" id="next-btn">Siguiente</button>
-            </fieldset>
-
-            <!-- PASO 2 -->
-            <fieldset class="step">
-                <legend>Recursos Humanos</legend>
-
-                <div class="resource-group">
-                    <label>Diseñador gráfico</label>
-                    <input type="number" min="0" value="0">
-                </div>
-
-                <div class="resource-group">
-                    <label>Programador</label>
-                    <input type="number" min="0" value="0">
-                </div>
-
-                <div class="resource-group">
-                    <label>Marketing</label>
-                    <input type="number" min="0" value="0">
-                </div>
-
-                <div class="resource-group">
-                    <label>Visual</label>
-                    <input type="number" min="0" value="0">
-                </div>
-
-                <div class="buttons">
-                    <button type="button" id="prev-btn">Atrás</button>
-                    <button type="submit">Crear Proyecto</button>
-                </div>
-            </fieldset>
-
-        </form>
-
-        <script src="script.js"></script>
-        <script>
-            document.getElementById("project-form").addEventListener("submit", function (e) {
-                e.preventDefault();
-
-                const name = document.getElementById("project-name").value;
-                const startDate = document.getElementById("start-date").value;
-                const endDate = document.getElementById("deadline-date").value;
-                const kickoffDate = document.getElementById("kickoff-date").value;
-                const checkpoints = document.getElementById("checkpoints").value;
-
-                const newProject = { name, startDate, endDate, kickoffDate, checkpoints };
-
-                const projects = JSON.parse(localStorage.getItem("projects") || "[]");
-                projects.push(newProject);
-                localStorage.setItem("projects", JSON.stringify(projects));
-
-                alert("Proyecto guardado! Se mostrará en el calendario principal.");
-                window.location.href = "index.html"; // Redirige al dashboard
-            });
-        </script>
-    </section>
 
     <main>
+        <section class="form-container">
+            <header>
+                <h1 class="display-none">New Project</h1>
+            </header>
 
+            <form id="project-form">
+
+                <!-- PASO 1 -->
+                <fieldset class="step active">
+                    <!--<legend>Información del Proyecto</legend>-->
+
+                    <div class="form-group">
+                        <label for="project-name">Project Name</label>
+                        <input type="text" id="project-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="start-date">Start Date</label>
+                        <input type="date" id="start-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ideal-end-date">Preferred Finish Date</label>
+                        <input type="date" id="ideal-end-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deadline-date">Death Line</label>
+                        <input type="date" id="deadline-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="kickoff-date">Kick-Off Meeting</label>
+                        <input type="date" id="kickoff-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="checkpoints">Checkpoint Number</label>
+                        <input type="number" id="checkpoints" min="0" required>
+                    </div>
+
+                    <button type="button" id="next-btn">Siguiente</button>
+                </fieldset>
+
+                <!-- PASO 2 -->
+                <fieldset class="step">
+                    <legend>Recursos Humanos</legend>
+
+                    <div class="resource-group">
+                        <label>Diseñador gráfico</label>
+                        <input type="number" min="0" value="0">
+                    </div>
+
+                    <div class="resource-group">
+                        <label>Programador</label>
+                        <input type="number" min="0" value="0">
+                    </div>
+
+                    <div class="resource-group">
+                        <label>Marketing</label>
+                        <input type="number" min="0" value="0">
+                    </div>
+
+                    <div class="resource-group">
+                        <label>Visual</label>
+                        <input type="number" min="0" value="0">
+                    </div>
+
+                    <div class="buttons">
+                        <button type="button" id="prev-btn">Atrás</button>
+                        <button type="submit">Crear Proyecto</button>
+                    </div>
+                </fieldset>
+
+            </form>
+
+            <script src="script.js"></script>
+            <script>
+                document.getElementById("project-form").addEventListener("submit", function (e) {
+                    e.preventDefault();
+
+                    const name = document.getElementById("project-name").value;
+                    const startDate = document.getElementById("start-date").value;
+                    const endDate = document.getElementById("deadline-date").value;
+                    const kickoffDate = document.getElementById("kickoff-date").value;
+                    const checkpoints = document.getElementById("checkpoints").value;
+
+                    const newProject = { name, startDate, endDate, kickoffDate, checkpoints };
+
+                    const projects = JSON.parse(localStorage.getItem("projects") || "[]");
+                    projects.push(newProject);
+                    localStorage.setItem("projects", JSON.stringify(projects));
+
+                    alert("Proyecto guardado! Se mostrará en el calendario principal.");
+                    window.location.href = "index.html"; // Redirige al dashboard
+                });
+            </script>
+        </section>
     </main>
 
 
