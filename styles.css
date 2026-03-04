@@ -52,6 +52,22 @@ body {
     color: #da7e65;
 }
 
+.menu-notif {
+    position: relative;
+}
+
+.menu-notif::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
 .menu {
     display: flex;
 }
@@ -82,6 +98,10 @@ a.onleave-button {
     font-size: large;
 }
 
+.onleave-button:hover {
+    background-color: #4458cc;
+}
+
 a.button {
     padding: 0.5rem 1rem;
     background-color: #f57d0c;
@@ -95,6 +115,7 @@ a.button {
 
 a.button:hover {
     background-color: #d35400;
+    color: white;
 }
 
 a.hire-button {
@@ -155,7 +176,8 @@ main {
     display: none;
 }
 
-/* TARJETAS CALENDARIO */
+/* INDEX */
+
 .calendar-container {
     display: flex;
     background-color: white;
@@ -168,45 +190,28 @@ main {
     padding: 2rem;
 }
 
-/* FOOTER */
-.footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.2rem;
-    background-color: white;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-    align-items: center;
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled):active {
+    border-color: white;
+    color: var(--fc-button-text-color);
+    border-radius: 10px;
 }
 
-.footer ul {
-    display: flex;
+.fc-direction-ltr .fc-button-group>.fc-button:not(:first-child) {
+    border-color: white;
+    border-radius: 10px;
 }
 
-.footer li {
-    list-style: none;
-    margin: 0 10px;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
+.fc-direction-ltr .fc-button-group>.fc-button:not(:last-child) {
+    border-color: white;
+    border-radius: 10px;
 }
 
-.footer a {
-    text-decoration: none;
-    color: #fda085;
+.fc .fc-button-primary:disabled {
+    border-radius: 10px;
 }
 
-.icono-footer {
-    color: #da7e65;
-    font-size: 25px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.icono-footer:hover {
-    color: #d35400;
-    transform: scale(1.2);
-
-}
-
+/* TEAM PAGE */
 /* CAROUSEL */
 
 .carousel-main {
@@ -231,7 +236,6 @@ main {
 
 .carousel-card {
     flex: 0 0 350px;
-    /* ancho fijo de cada tarjeta */
     height: 450px;
     background: white;
     border-radius: 15px;
@@ -273,16 +277,13 @@ main {
     text-align: left;
 }
 
-/* Scrollbar opcional: ocultar en Firefox/Chrome */
 .carousel-container::-webkit-scrollbar {
     display: none;
 }
 
 .carousel-container {
     -ms-overflow-style: none;
-    /* IE 10+ */
     scrollbar-width: none;
-    /* Firefox */
 }
 
 .tags {
@@ -310,6 +311,8 @@ main {
     display: flex;
     margin-top: 20px;
 }
+
+/* REQUEST PAGE */
 
 .vacation {
     color: #f57d0c;
@@ -365,19 +368,24 @@ main {
 }
 
 /* FORMULARIO */
+
 .form-container {
     display: flex;
-    height: 80%;
+    min-height: auto;
     max-height: 70vh;
     flex-direction: column;
     justify-content: center;
     background-color: white;
     padding: 3rem;
-    margin: 5% auto;
     width: 60%;
     max-width: 900px;
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-container h2 {
+    color: #e67e22;
+    margin-bottom: 20px;
 }
 
 #next-btn {
@@ -507,6 +515,7 @@ input:focus {
 }
 
 /* SEARCH BAR */
+
 .search-container {
     width: 80%;
     max-width: 900px;
@@ -549,7 +558,48 @@ input:focus {
     flex-direction: column;
 }
 
+/* FOOTER */
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.2rem;
+    background-color: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    align-items: center;
+}
+
+.footer ul {
+    display: flex;
+}
+
+.footer li {
+    list-style: none;
+    margin: 0 10px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #fda085;
+}
+
+.icono-footer {
+    color: #da7e65;
+    font-size: 25px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.icono-footer:hover {
+    color: #d35400;
+    transform: scale(1.2);
+
+}
+
 /* RESPONSIVE */
+
 @media (max-width: 768px) {
     .nav {
         position: relative;
@@ -610,7 +660,7 @@ input:focus {
     .form-container {
         height: 70vh;
         align-items: center;
-        margin: rem auto;
+        margin: auto;
     }
 
 }
