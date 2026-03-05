@@ -32,7 +32,6 @@ además de gestionar su carga de trabajo para prevenir el burnout.
 
 ![HTML](https://img.shields.io/badge/HTML5-%23E34F26?style=flat&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS3-%23663399?style=flat&logo=css&logoColor=white)
-!ChatGPT
 
 ## Autora
 
