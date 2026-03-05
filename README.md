@@ -1,6 +1,6 @@
 # Workplanning
 
- ![Sublytics Social Preview](./assets/Sublytics%20Social%20Preview.jpg)
+ ![Sublytics Social Preview](./img/workplanning.png)
 
 ## Problema identificado
 
